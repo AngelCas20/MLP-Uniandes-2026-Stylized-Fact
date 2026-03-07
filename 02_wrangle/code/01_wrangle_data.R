@@ -30,7 +30,7 @@ wb = wb %>%
 ### 2.2 Clean Penn World Table
 pwt = pwt %>% 
       mutate(gdp_per_capita = rgdpo/pop,
-             capital_per_capita = cn/pop) %>% 
+             capital_per_capita = rnna/pop) %>% 
       select(year,isocode = countrycode,country,gdp_per_capita,capital_per_capita) %>% 
       arrange(isocode,year) %>% 
       drop_na(capital_per_capita)
@@ -70,5 +70,6 @@ geometric_growth = data %>%
                    ungroup()
 
 ##==: 6. Export data
+
 export(geometric_growth,'02_wrangle/output/01_geometric_growth.rds')
 export(data,'02_wrangle/output/01_processed_data.rds')
