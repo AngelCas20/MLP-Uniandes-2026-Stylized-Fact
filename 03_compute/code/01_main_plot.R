@@ -9,32 +9,37 @@ source('00_programs/00_themes.R')
 df = import('02_wrangle/output/01_geometric_growth.rds',
             setclass = 'tibble')
 
-##==: 2. Make plots
+##==: 2. Subset data
 
-### 2.1 Increase in financial inclusion vs capital per capita growth
+df = df %>% 
+     filter(isocode != 'VEN')
 
+##==: 3. Make plots
+
+### 3.1 Increase in financial inclusion vs capital per capita growth
 p1 = ggplot(df)+
      geom_point(aes(x = share_adults_financial_account,
                     y = capital_per_capita),
                     size = 3.5,
-                    col = 'midnightblue')+
+                    col = 'darkgreen')+
      geom_smooth(aes(x = share_adults_financial_account,
                      y = capital_per_capita),
                      method = 'lm',
                      col = 'black')+
      tema+
      scale_x_continuous(labels = scales::percent,breaks = seq(0,0.3,0.05))+
-     scale_y_continuous(labels = scales::percent,breaks = seq(-0.1,0.3,0.05))+
+     scale_y_continuous(labels = scales::percent,breaks = seq(-0.1,0.3,0.025))+
      labs(x = NULL,
-          y = 'Crecimiento porcentual del \n Capital per capita (%)');p1
+          y = 'Crecimiento porcentual del \n Capital per capita (%)',
+          title = 'Panel A: Crecimiento del acceso al sistema financiero vs \ncrecimiento del Stock de Capital per cápita');p1
 
-### 2.2 Increase in financial inclusion vs gdp per capita growth
+### 3.2 Increase in financial inclusion vs gdp per capita growth
 
 p2 = ggplot(df)+
      geom_point(aes(x = share_adults_financial_account,
                     y = gdp_per_capita),
                     size = 3.5,
-                    col = 'midnightblue')+
+                    col = 'darkgreen')+
      geom_smooth(aes(x = share_adults_financial_account,
                      y = gdp_per_capita),
                      method = 'lm',
@@ -43,17 +48,16 @@ p2 = ggplot(df)+
      scale_x_continuous(labels = scales::percent,breaks = seq(0,0.3,0.05))+
      scale_y_continuous(labels = scales::percent,breaks = seq(-0.1,0.1,0.025))+
      labs(x = NULL,
-          y = 'Crecimiento porcentual del \n PIB per capita (%)');p2
+          y = 'Crecimiento porcentual del \n PIB per capita (%)',
+          title = 'Panel B: Crecimiento del acceso al sistema financiero vs \ncrecimiento del PIB per cápita');p2
 
-##==: 3. Merge plots
+##==: 4. Merge plots
 
 p3 = ggarrange(p1,p2);p3
 
-model = lm(capital_per_capita ~ share_adults_financial_account,data = df) %>% 
-  summary()
+p3 = annotate_figure(p3,
+                bottom = textGrob("Crecimiento porcentual del porcentaje de la \npoblación con acceso al sistema financiero (%)", gp = gpar(cex = 1.3)))
 
-# Load the library
-p_load(lmtest)
+##==: 5. Export data
 
-# Run the test
-bptest(model)
+ggsave(p3,filename = '03_compute/output/01_main_plot.pdf',width = 14,height = 7)
