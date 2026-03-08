@@ -12,7 +12,7 @@ df = import('02_wrangle/output/01_geometric_growth.rds',
 ##==: 2. Subset data
 
 df = df %>% 
-     filter(isocode != 'VEN')
+     filter(isocode != 'VEN') ### Remove Venezuela from dataset
 
 ##==: 3. Make plots
 
