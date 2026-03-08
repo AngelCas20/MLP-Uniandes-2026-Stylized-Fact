@@ -56,6 +56,10 @@ pwt = pwt %>%
 data = inner_join(x = wb,y = pwt,by = c('year','isocode')) %>% 
        relocate(year,isocode,country,income_group = incomegroupwb24)
 
+### 4.1 Remove venezuela from dataset
+data = data %>% 
+       filter(isocode != 'VEN')
+
 ##==: 5. Compute growth rate
 
 time_diff = diff(interest_period)
