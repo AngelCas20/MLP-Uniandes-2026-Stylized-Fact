@@ -7,4 +7,4 @@ tema = theme_bw()+
              axis.title.y = element_text(size = 13),
              axis.text.x = element_text(size = 11,face = 'bold'),
              axis.text.y = element_text(size = 11,face = 'bold'),
-             plot.title = element_text(size = 14))
+             plot.title = element_text(size = 15))

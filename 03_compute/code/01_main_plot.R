@@ -30,7 +30,7 @@ p1 = ggplot(df)+
      scale_x_continuous(labels = scales::percent,breaks = seq(0,0.3,0.05))+
      scale_y_continuous(labels = scales::percent,breaks = seq(-0.1,0.3,0.025))+
      labs(x = NULL,
-          y = 'Crecimiento porcentual del \n Capital per capita (%)',
+          y = 'Crecimiento del Capital per capita (%)',
           title = 'Panel A: Crecimiento del acceso al sistema financiero vs \ncrecimiento del Stock de Capital per cápita');p1
 
 ### 3.2 Increase in financial inclusion vs gdp per capita growth
@@ -48,7 +48,7 @@ p2 = ggplot(df)+
      scale_x_continuous(labels = scales::percent,breaks = seq(0,0.3,0.05))+
      scale_y_continuous(labels = scales::percent,breaks = seq(-0.1,0.1,0.025))+
      labs(x = NULL,
-          y = 'Crecimiento porcentual del \n PIB per capita (%)',
+          y = 'Crecimiento del PIB per capita (%)',
           title = 'Panel B: Crecimiento del acceso al sistema financiero vs \ncrecimiento del PIB per cápita');p2
 
 ##==: 4. Merge plots
@@ -56,8 +56,8 @@ p2 = ggplot(df)+
 p3 = ggarrange(p1,p2);p3
 
 p3 = annotate_figure(p3,
-                bottom = textGrob("Crecimiento porcentual del porcentaje de la \npoblación con acceso al sistema financiero (%)", gp = gpar(cex = 1.3)))
+                bottom = textGrob("Crecimiento del porcentaje de la \npoblación con acceso al sistema financiero (%)", gp = gpar(cex = 1.3)))
 
 ##==: 5. Export data
 
-ggsave(p3,filename = '03_compute/output/01_main_plot.pdf',width = 14,height = 7)
+ggsave(p3,filename = '03_compute/output/01_main_plot.pdf',width = 14,height = 8)
