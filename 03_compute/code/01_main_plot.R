@@ -9,14 +9,9 @@ source('00_programs/00_themes.R')
 df = import('02_wrangle/output/01_geometric_growth.rds',
             setclass = 'tibble')
 
-##==: 2. Subset data
+##==: 2. Make plots
 
-df = df %>% 
-     filter(isocode != 'VEN') ### Remove Venezuela from dataset
-
-##==: 3. Make plots
-
-### 3.1 Increase in financial inclusion vs capital per capita growth
+### 2.1 Increase in financial inclusion vs capital per capita growth
 p1 = ggplot(df)+
      geom_point(aes(x = share_adults_financial_account,
                     y = capital_per_capita),
@@ -33,7 +28,7 @@ p1 = ggplot(df)+
           y = 'Crecimiento del Capital per capita (%)',
           title = 'Panel A: Crecimiento del acceso al sistema financiero vs \ncrecimiento del Stock de Capital per cápita');p1
 
-### 3.2 Increase in financial inclusion vs gdp per capita growth
+### 2.2 Increase in financial inclusion vs gdp per capita growth
 
 p2 = ggplot(df)+
      geom_point(aes(x = share_adults_financial_account,
@@ -51,13 +46,13 @@ p2 = ggplot(df)+
           y = 'Crecimiento del PIB per capita (%)',
           title = 'Panel B: Crecimiento del acceso al sistema financiero vs \ncrecimiento del PIB per cápita');p2
 
-##==: 4. Merge plots
+##==: 3. Merge plots
 
 p3 = ggarrange(p1,p2);p3
 
 p3 = annotate_figure(p3,
                 bottom = textGrob("Crecimiento del porcentaje de la \npoblación con acceso al sistema financiero (%)", gp = gpar(cex = 1.3)))
 
-##==: 5. Export data
+##==: 4. Export data
 
 ggsave(p3,filename = '03_compute/output/01_main_plot.pdf',width = 14,height = 8)
