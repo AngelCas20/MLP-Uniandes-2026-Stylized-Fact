@@ -1,6 +1,6 @@
 #------------------------#
 # Angel Castillo Negrete #
-#    2026 - 03 - 07      #
+#    2026 - 03 - 08      #
 #------------------------#
 
 ### setup
@@ -33,4 +33,4 @@ imf = import('01_data/input/dataset_2026-03-08T23_46_47.042512374Z_DEFAULT_INTEG
 ##==: 2. Export data
 export(wb,'01_data/output/01_wb_global_findex_db_2025.rds')
 export(pwt,'01_data/output/01_pwt110.rds')
-export(imf,'01_data/output/dataset_2026-03-08T23_46_47.042512374Z_DEFAULT_INTEGRATION_IMF.STA_FAS_4.0.0.rds')
+export(imf,'01_data/output/01_imf_data.rds')
