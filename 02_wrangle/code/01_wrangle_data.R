@@ -1,6 +1,6 @@
 #------------------------#
 # Angel Castillo Negrete #
-#    2026 - 03 - 07      #
+#    2026 - 03 - 08      #
 #------------------------#
 
 ### setup
@@ -10,9 +10,9 @@ source('00_programs/00_packages.R')
 
 ##==: 1. Load data
 
-wb = import('01_data/output/01_wb_global_findex_db_2025.rds',
-            setclass = 'tibble')
-     
+imf = import('01_data/output/01_imf_data.rds',
+            setclass = 'tibble') 
+
 pwt = import('01_data/output/01_pwt110.rds',
             setclass = 'tibble')            
 
