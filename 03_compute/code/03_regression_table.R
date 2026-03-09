@@ -11,15 +11,15 @@ df = import('02_wrangle/output/01_geometric_growth.rds',
 
 ##==: 2. Run regression
 
-model_iid = feols(data = df,c(gdp_per_capita,capital_per_capita) ~ share_adults_financial_account)
+model_iid = feols(data = df,c(gdp_per_capita,capital_per_capita) ~ number_accounts_1000_adults)
 
-model_robust = feols(data = df,c(gdp_per_capita,capital_per_capita) ~ share_adults_financial_account,se = 'hc1')
+model_robust = feols(data = df,c(gdp_per_capita,capital_per_capita) ~ number_accounts_1000_adults,se = 'hc1')
 
 ##==: 3. Make table
 
 tabla = etable(model_iid,
                model_robust,
-               dict = c('share_adults_financial_account' = 'Acceso al sistema \\\\ financiero formal',
+               dict = c('number_accounts_1000_adults' = 'Acceso al sistema \\\\ financiero formal',
                         'gdp_per_capita' = "PIB per cápita",
                         'capital_per_capita' = 'Stock de Capital \nper cápita'),
               fitstat = ~ n + ar2,

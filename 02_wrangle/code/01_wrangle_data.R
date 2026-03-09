@@ -75,7 +75,7 @@ geometric_growth = geometric_growth %>%
                             })) %>% 
                    ungroup()
 
-##==: 6. Export data
+##==: 5. Export data
 
 export(geometric_growth,'02_wrangle/output/01_geometric_growth.rds')
 export(data,'02_wrangle/output/01_processed_data.rds')
