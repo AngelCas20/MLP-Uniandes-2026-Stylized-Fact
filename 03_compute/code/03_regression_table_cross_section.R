@@ -19,9 +19,9 @@ model_robust = feols(data = df,c(gdp_per_capita,capital_per_capita) ~ number_acc
 
 tabla = etable(model_iid,
                model_robust,
-               dict = c('number_accounts_1000_adults' = 'Depósitos en el \\\\ sistema financiero',
-                        'gdp_per_capita' = "PIB per cápita",
-                        'capital_per_capita' = 'Stock de Capital \nper cápita'),
+               dict = c('number_accounts_1000_adults' = '$\\Delta$ Cuentas de depósitos \\\\ en el sistema financiero',
+                        'gdp_per_capita' = "$\\Delta$ PIB per cápita",
+                        'capital_per_capita' = '$\\Delta$ Stock de Capital \nper cápita'),
               fitstat = ~ n + ar2,
               digits = 3,
               tex = TRUE,
@@ -29,7 +29,9 @@ tabla = etable(model_iid,
               ) %>%
         as.character()
 
+tabla[5] = str_replace_all(tabla[5],'Dependent Variables:',' ')
 tabla[6] = str_replace_all(tabla[6],'Model:','Modelo:')
+tabla[8] = ' '
 tabla[9] = str_replace_all(tabla[9],'Constant','Constante')
 tabla = tabla[c(-14)]
 tabla[14] = str_replace_all(tabla[14],'Standard-Errors','Errores estándar')
