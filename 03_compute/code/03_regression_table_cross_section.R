@@ -19,7 +19,7 @@ model_robust = feols(data = df,c(gdp_per_capita,capital_per_capita) ~ number_acc
 
 tabla = etable(model_iid,
                model_robust,
-               dict = c('number_accounts_1000_adults' = 'Acceso al sistema \\\\ financiero formal',
+               dict = c('number_accounts_1000_adults' = 'Depósitos en el \\\\ sistema financiero',
                         'gdp_per_capita' = "PIB per cápita",
                         'capital_per_capita' = 'Stock de Capital \nper cápita'),
               fitstat = ~ n + ar2,
