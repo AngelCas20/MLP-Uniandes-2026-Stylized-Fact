@@ -31,13 +31,13 @@ tabla = etable(model_iid,
 
 tabla[6] = str_replace_all(tabla[6],'Model:','Modelo:')
 tabla[9] = str_replace_all(tabla[9],'Constant','Constante')
-tabla[14] = "   \\midrule" 
-tabla[15] = str_replace_all(tabla[15],'Standard-Errors','Errores estándar')
-tabla[15] = str_replace_all(tabla[15],'Heteroskedasticity-robust','HC1')
-tabla[16] = str_replace_all(tabla[16],'Observations','Observaciones')
-tabla[17] = str_replace_all(tabla[17],"Adjusted","Adj")
+tabla = tabla[c(-14)]
+tabla[14] = str_replace_all(tabla[14],'Standard-Errors','Errores estándar')
+tabla[14] = str_replace_all(tabla[14],'Heteroskedasticity-robust','HC1')
+tabla[15] = str_replace_all(tabla[15],'Observations','Observaciones')
+tabla[16] = str_replace_all(tabla[16],"Adjusted","Adj")
 
-tabla = tabla[c(-19)]
+tabla = tabla[c(-18)]
 
 ##==: 4. Save
-write_lines(tabla,'03_compute/output/03_regression_table.tex')
+write_lines(tabla,'03_compute/output/03_regression_table_cross_section.tex')
