@@ -51,7 +51,7 @@ p2 = ggplot(df)+
 p3 = ggarrange(p1,p2);p3
 
 p3 = annotate_figure(p3,
-                bottom = textGrob("Crecimiento del porcentaje de la \npoblación con acceso al sistema financiero (%)", gp = gpar(cex = 1.3)))
+                bottom = textGrob("Crecimiento de la cantidad de cuentas de ahorro \npor cada 1000 personas en al sistema financiero (%)", gp = gpar(cex = 1.3)))
 
 ##==: 4. Export data
 
