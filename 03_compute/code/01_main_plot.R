@@ -13,11 +13,11 @@ df = import('02_wrangle/output/01_geometric_growth.rds',
 
 ### 2.1 Increase in financial inclusion vs capital per capita growth
 p1 = ggplot(df)+
-     geom_point(aes(x = share_adults_financial_account,
+     geom_point(aes(x = number_accounts_1000_adults,
                     y = capital_per_capita),
                     size = 3.5,
                     col = 'darkgreen')+
-     geom_smooth(aes(x = share_adults_financial_account,
+     geom_smooth(aes(x = number_accounts_1000_adults,
                      y = capital_per_capita),
                      method = 'lm',
                      col = 'black')+
@@ -31,11 +31,11 @@ p1 = ggplot(df)+
 ### 2.2 Increase in financial inclusion vs gdp per capita growth
 
 p2 = ggplot(df)+
-     geom_point(aes(x = share_adults_financial_account,
+     geom_point(aes(x = number_accounts_1000_adults,
                     y = gdp_per_capita),
                     size = 3.5,
                     col = 'darkgreen')+
-     geom_smooth(aes(x = share_adults_financial_account,
+     geom_smooth(aes(x = number_accounts_1000_adults,
                      y = gdp_per_capita),
                      method = 'lm',
                      col = 'black')+
