@@ -21,9 +21,9 @@ model = feols(data = df,c(gdp_per_capita,capital_per_capita) ~ number_accounts_1
 ##==: 4. Make table
 
 tabla = etable(model,
-               dict = c('number_accounts_1000_adults' = 'Depósitos en el \\\\ sistema financiero',
-                        'gdp_per_capita' = "PIB per cápita",
-                        'capital_per_capita' = 'Stock de Capital \nper cápita',
+               dict = c('number_accounts_1000_adults' = 'ln(Cuentas de depósitos \\\\ en el sistema financiero)',
+                        'gdp_per_capita' = "ln(PIB per cápita)",
+                        'capital_per_capita' = 'ln(Stock de Capital \nper cápita)',
                         'isocode' = 'País',
                         'year' =  'Año'),
               fitstat = ~ n + awr2,
@@ -33,13 +33,15 @@ tabla = etable(model,
               ) %>% 
         as.character()
 
+tabla[5] = str_replace_all(tabla[5],'Dependent Variables:',' ')
 tabla[6] = str_replace_all(tabla[6],'Model:','Modelo:')
+tabla[8] = ' '
 tabla[12] = str_replace_all(tabla[12],'Fixed-effects','Efectos fijos')
+tabla[13] = str_replace_all(tabla[13],'Yes','\\\\checkmark')
+tabla[14] = str_replace_all(tabla[14],'Yes','\\\\checkmark')
 tabla = tabla[c(-16,-17)]
-
 tabla[16] = str_replace_all(tabla[16],'Observations','Observaciones')
 tabla[17] = str_replace_all(tabla[17],"Adjusted","Adj")
-
 tabla = tabla[c(-19,-20)]
 
 
