@@ -2,23 +2,22 @@
 cat("\f")
 rm(list = ls())
 source('00_programs/00_packages.R')
-source('00_programs/00_themes.R')
 
 ##==: 1. Load data
 
-df = import('02_wrangle/output/02_geometric_growth_robustness.rds',
+df = import('02_wrangle/output/03_geometric_growth_mechanism.rds',
             setclass = 'tibble')
 
 ##==: 2. Make plots
 
 ### 2.1 Increase in financial inclusion vs capital per capita growth
 p1 = ggplot(df)+
-     geom_point(aes(x = number_accounts_1000_adults,
-                    y = capital_per_capita),
+     geom_point(aes(x = number_of_deposit_accounts_commercial_banks,
+                    y = loan_accounts_commercial_banks),
                     size = 3.5,
                     col = 'darkgreen')+
-     geom_smooth(aes(x = number_accounts_1000_adults,
-                     y = capital_per_capita),
+     geom_smooth(aes(x = number_of_deposit_accounts_commercial_banks,
+                     y = loan_accounts_commercial_banks),
                      method = 'lm',
                      col = 'black')+
      tema+
@@ -31,12 +30,12 @@ p1 = ggplot(df)+
 ### 2.2 Increase in financial inclusion vs gdp per capita growth
 
 p2 = ggplot(df)+
-     geom_point(aes(x = number_accounts_1000_adults,
-                    y = gdp_per_capita),
+     geom_point(aes(x = number_of_deposit_accounts_commercial_banks,
+                    y = outstanding_loans_commercial_banks),
                     size = 3.5,
                     col = 'darkgreen')+
-     geom_smooth(aes(x = number_accounts_1000_adults,
-                     y = gdp_per_capita),
+     geom_smooth(aes(x = number_of_deposit_accounts_commercial_banks,
+                     y = outstanding_loans_commercial_banks),
                      method = 'lm',
                      col = 'black')+
      tema+
@@ -55,4 +54,4 @@ p3 = annotate_figure(p3,
 
 ##==: 4. Export data
 
-ggsave(p3,filename = '04_robustness/output/01_main_plot_robust.pdf',width = 14,height = 8)
+ggsave(p3,filename = '05_mechanisms/output/01_main_plot_mechanism.pdf',width = 14,height = 8)
