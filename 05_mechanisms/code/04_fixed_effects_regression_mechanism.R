@@ -5,21 +5,16 @@ source('00_programs/00_packages.R')
 
 ##==: 1. Load data
 
-df = import('02_wrangle/output/01_processed_data.rds',
+df = import('02_wrangle/output/03_processed_data_mechanism.rds',
             setclass = 'tibble')
 
 ##==: 2. Convert variables to log
 df = df %>% 
-     mutate(across(.cols = c(gdp_per_capita,capital_per_capita,number_accounts_1000_adults),
+     mutate(across(.cols = c(loan_accounts_commercial_banks,number_of_deposit_accounts_commercial_banks),
                    .fns = log))
 
-### 2.1 Subset data set to 2019 and remove Venezuela
-df = df %>% 
-     filter(year <= 2019 & isocode != 'VEN') 
-
-
 ##==: 3. Run regression
-model = feols(data = df,c(gdp_per_capita,capital_per_capita) ~ number_accounts_1000_adults|isocode + year)
+model = feols(data = df,c(outstanding_loans_commercial_banks,loan_accounts_commercial_banks) ~ number_of_deposit_accounts_commercial_banks|isocode + year)
 etable(model)
 
 ##==: 4. Make table
@@ -49,4 +44,4 @@ tabla[17] = str_replace_all(tabla[17],"Adjusted","Adj")
 tabla = tabla[c(-19,-20)]
 
 ##==: 4. Save
-write_lines(tabla,'04_robustness/output/04_regression_table_fixed_effects_robust.tex')
+write_lines(tabla,'05_mechanisms/output/04_regression_table_fixed_effects_mechanism.tex')
