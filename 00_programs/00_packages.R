@@ -8,7 +8,8 @@ pkgs = c("tidyverse",
          "kableExtra",
          "countrycode",
          "fixest",
-         "grid")
+         "grid",
+         "snakecase")
 
 ### Instal pacman if not available
 if(c("pacman") %in% installed.packages()[,1] == FALSE){
