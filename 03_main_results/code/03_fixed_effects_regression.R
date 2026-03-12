@@ -9,9 +9,12 @@ df = import('02_wrangle/output/01_processed_data.rds',
             setclass = 'tibble')
 
 ##==: 2. Convert variables to log
+
 df = df %>% 
      mutate(across(.cols = c(gdp_per_capita,capital_per_capita,number_accounts_1000_adults),
                    .fns = log))
+
+unique_countries = df$isocode %>% unique() %>% length()
 
 ##==: 3. Run regression
 
@@ -43,6 +46,7 @@ tabla[16] = str_replace_all(tabla[16],'Observations','Observaciones')
 tabla[17] = str_replace_all(tabla[17],"Adjusted","Adj")
 tabla = tabla[c(-19,-20)]
 
+tabla = append(tabla,paste0('Países & ',unique_countries,' & ',unique_countries),after = 16)
 
 ##==: 4. Save
 write_lines(tabla,'03_main_results/output/03_regression_table_fixed_effects.tex')

@@ -9,20 +9,25 @@ df = import('02_wrangle/output/03_processed_data_mechanism.rds',
             setclass = 'tibble')
 
 ##==: 2. Convert variables to log
+
 df = df %>% 
-     mutate(across(.cols = c(loan_accounts_commercial_banks,number_of_deposit_accounts_commercial_banks),
+     mutate(across(.cols = c(outstanding_loans_commercial_banks,loan_accounts_commercial_banks,number_of_deposit_accounts_commercial_banks),
                    .fns = log))
 
+unique_countries = df$isocode %>% unique() %>% length()
+
+
 ##==: 3. Run regression
+
 model = feols(data = df,c(outstanding_loans_commercial_banks,loan_accounts_commercial_banks) ~ number_of_deposit_accounts_commercial_banks|isocode + year)
 etable(model)
 
 ##==: 4. Make table
 
 tabla = etable(model,
-               dict = c('number_accounts_1000_adults' = 'ln(Cuentas de depósitos \\\\ en el sistema financiero)',
-                        'gdp_per_capita' = "ln(PIB per cápita)",
-                        'capital_per_capita' = 'ln(Stock de Capital \nper cápita)',
+               dict = c('capital_per_capita' = 'ln(Stock de Capital per cápita)',
+                        'outstanding_loans_commercial_banks' = "ln(Cuentas de créditos \\\\ en el sistema financiero)",
+                        'loan_accounts_commercial_banks' = 'ln(Cartera acumulada de créditos \\\\ en el sistema financiero)',
                         'isocode' = 'País',
                         'year' =  'Año'),
               fitstat = ~ n + awr2,
@@ -43,5 +48,8 @@ tabla[16] = str_replace_all(tabla[16],'Observations','Observaciones')
 tabla[17] = str_replace_all(tabla[17],"Adjusted","Adj")
 tabla = tabla[c(-19,-20)]
 
-##==: 4. Save
+tabla = append(tabla,paste0('Países & ',unique_countries,' & ',unique_countries),after = 16)
+
+##==: 4. Save table
+
 write_lines(tabla,'05_mechanisms/output/03_regression_table_fixed_effects_mechanism.tex')

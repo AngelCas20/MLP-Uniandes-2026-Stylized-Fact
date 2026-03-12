@@ -14,6 +14,8 @@ df = df %>%
      mutate(across(.cols = c(capital_per_capita,loan_accounts_commercial_banks,outstanding_loans_commercial_banks),
                    .fns = log))
 
+unique_countries = df$isocode %>% unique() %>% length()
+
 ##==: 3. Run regression
 
 model1 = feols(data = df,capital_per_capita ~ loan_accounts_commercial_banks|isocode + year)
@@ -42,10 +44,13 @@ tabla[8] = ' '
 tabla[14] = str_replace_all(tabla[14],'Fixed-effects','Efectos fijos')
 tabla[15] = str_replace_all(tabla[15],'Yes','\\\\checkmark')
 tabla[16] = str_replace_all(tabla[16],'Yes','\\\\checkmark')
-tabla = tabla[c(-18,-91)]
-tabla[20] = str_replace_all(tabla[20],'Observations','Observaciones')
-tabla[21] = str_replace_all(tabla[21],"Adjusted","Adj")
-tabla = tabla[c(-23,-24)]
+tabla = tabla[c(-18,-19)]
+tabla[18] = str_replace_all(tabla[18],'Observations','Observaciones')
+tabla[19] = str_replace_all(tabla[19],"Adjusted","Adj")
+tabla = tabla[c(-21,-22)]
+
+tabla = append(tabla,paste0('Países & ',unique_countries,' & ',unique_countries),after = 18)
 
 ##==: 4. Save table
+
 write_lines(tabla,'05_mechanisms/output/06_regression_table_fixed_effects_mechanism.tex')
