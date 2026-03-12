@@ -42,9 +42,9 @@ df = df %>%
 ### 2.5 Process Penn World Table
 pwt = pwt %>% 
       select(isocode  = countrycode,
-             year,
-             pop) %>% 
-      mutate(pop = pop*1e6) %>% 
+             year,pop,rnna) %>% 
+      mutate(pop = pop*1e6,
+             capital_per_capita = rnna/pop) %>% 
       drop_na()
 
 ##==: 3. Prepare data for for analysis 
@@ -76,7 +76,7 @@ geometric_growth = data %>%
 ### 4.4 Compute geometric growth 
 geometric_growth = geometric_growth %>% 
                    group_by(isocode) %>% 
-                   summarise(across(.cols = c(outstanding_loans_commercial_banks,loan_accounts_commercial_banks,number_of_deposit_accounts_commercial_banks),
+                   summarise(across(.cols = c(capital_per_capita,outstanding_loans_commercial_banks,loan_accounts_commercial_banks,number_of_deposit_accounts_commercial_banks),
                                     .fns = function(x){
                                      x = (x/lag(x))^(1/time_diff) -1
                                      x = max(x,na.rm = T)
