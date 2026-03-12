@@ -5,14 +5,14 @@ source('00_programs/00_packages.R')
 
 ##==: 1. Load data
 
-df = import('02_wrangle/output/02_geometric_growth_robustness.rds',
+df = import('02_wrangle/output/03_geometric_growth_mechanism.rds',
             setclass = 'tibble')
 
 ##==: 2. Run regression
 
-model_iid = feols(data = df,c(gdp_per_capita,capital_per_capita) ~ number_accounts_1000_adults)
+model_iid = feols(data = df,c(outstanding_loans_commercial_banks,loan_accounts_commercial_banks) ~ number_of_deposit_accounts_commercial_banks)
 
-model_robust = feols(data = df,c(gdp_per_capita,capital_per_capita) ~ number_accounts_1000_adults,se = 'hc1')
+model_robust = feols(data = df,c(outstanding_loans_commercial_banks,loan_accounts_commercial_banks) ~ number_of_deposit_accounts_commercial_banks,se = 'hc1')
 
 etable(model_iid,model_robust)
 
@@ -20,9 +20,9 @@ etable(model_iid,model_robust)
 
 tabla = etable(model_iid,
                model_robust,
-               dict = c('number_accounts_1000_adults' = '$\\Delta$ Cuentas de depósitos \\\\ en el sistema financiero',
-                        'gdp_per_capita' = "$\\Delta$ PIB per cápita",
-                        'capital_per_capita' = '$\\Delta$ Stock de Capital \nper cápita'),
+               dict = c('number_of_deposit_accounts_commercial_banks' = '$\\Delta$ Cuentas de depósitos \\\\ en el sistema financiero',
+                        'outstanding_loans_commercial_banks' = "$\\Delta$ Cuentas de créditos \n en el sistema financiero",
+                        'loan_accounts_commercial_banks' = '$\\Delta$ Cartera acumulada de créditos \n en el sistema financiero'),
               fitstat = ~ n + ar2,
               digits = 3,
               tex = TRUE,
@@ -43,4 +43,4 @@ tabla[16] = str_replace_all(tabla[16],"Adjusted","Adj")
 tabla = tabla[c(-18)]
 
 ##==: 4. Save
-write_lines(tabla,'04_robustness/output/03_regression_table_cross_section_robust.tex')
+write_lines(tabla,'05_mechanisms/output/02_regression_table_cross_section_mechanism.tex')

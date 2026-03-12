@@ -5,24 +5,22 @@ source('00_programs/00_packages.R')
 
 ##==: 1. Load data
 
-df = import('02_wrangle/output/03_geometric_growth_mechanism.rds',
+df = import('02_wrangle/output/01_geometric_growth.rds',
             setclass = 'tibble')
 
 ##==: 2. Run regression
 
-model_iid = feols(data = df,c(outstanding_loans_commercial_banks,loan_accounts_commercial_banks) ~ number_of_deposit_accounts_commercial_banks)
+model_iid = feols(data = df,c(gdp_per_capita,capital_per_capita) ~ number_accounts_1000_adults)
 
-model_robust = feols(data = df,c(outstanding_loans_commercial_banks,loan_accounts_commercial_banks) ~ number_of_deposit_accounts_commercial_banks,se = 'hc1')
-
-etable(model_iid,model_robust)
+model_robust = feols(data = df,c(gdp_per_capita,capital_per_capita) ~ number_accounts_1000_adults,se = 'hc1')
 
 ##==: 3. Make table
 
 tabla = etable(model_iid,
                model_robust,
-               dict = c('number_of_deposit_accounts_commercial_banks' = '$\\Delta$ Cuentas de depósitos \\\\ en el sistema financiero',
-                        'outstanding_loans_commercial_banks' = "$\\Delta$ PIB per cápita",
-                        'loan_accounts_commercial_banks' = '$\\Delta$ Stock de Capital \nper cápita'),
+               dict = c('number_accounts_1000_adults' = '$\\Delta$ Cuentas de depósitos \\\\ en el sistema financiero',
+                        'gdp_per_capita' = "$\\Delta$ PIB per cápita",
+                        'capital_per_capita' = '$\\Delta$ Stock de Capital \nper cápita'),
               fitstat = ~ n + ar2,
               digits = 3,
               tex = TRUE,
@@ -43,4 +41,4 @@ tabla[16] = str_replace_all(tabla[16],"Adjusted","Adj")
 tabla = tabla[c(-18)]
 
 ##==: 4. Save
-write_lines(tabla,'05_mechanisms/output/03_regression_table_cross_section_mechanism.tex')
+write_lines(tabla,'03_main_results/output/02_regression_table_cross_section.tex')

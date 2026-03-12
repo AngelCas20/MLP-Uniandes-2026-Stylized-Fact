@@ -5,7 +5,7 @@ source('00_programs/00_packages.R')
 
 ##==: 1. Load data
 
-df = import('02_wrangle/output/01_geometric_growth.rds',
+df = import('02_wrangle/output/02_geometric_growth_robustness.rds',
             setclass = 'tibble')
 
 ##==: 2. Run regression
@@ -13,6 +13,8 @@ df = import('02_wrangle/output/01_geometric_growth.rds',
 model_iid = feols(data = df,c(gdp_per_capita,capital_per_capita) ~ number_accounts_1000_adults)
 
 model_robust = feols(data = df,c(gdp_per_capita,capital_per_capita) ~ number_accounts_1000_adults,se = 'hc1')
+
+etable(model_iid,model_robust)
 
 ##==: 3. Make table
 
@@ -41,4 +43,4 @@ tabla[16] = str_replace_all(tabla[16],"Adjusted","Adj")
 tabla = tabla[c(-18)]
 
 ##==: 4. Save
-write_lines(tabla,'03_compute/output/03_regression_table_cross_section.tex')
+write_lines(tabla,'04_robustness/output/02_regression_table_cross_section_robust.tex')

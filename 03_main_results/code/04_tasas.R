@@ -16,4 +16,4 @@ mean = data %>%
        group_by(incomegroupwb24) %>% 
        summarise(mean = weighted.mean(account_t_d, pop_adult, na.rm = TRUE))
 
-export(mean, "03_compute/output/02_tasas.xlsx")
+export(mean, "03_main_results/output/04_tasas.xlsx")

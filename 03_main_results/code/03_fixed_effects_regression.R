@@ -45,4 +45,4 @@ tabla = tabla[c(-19,-20)]
 
 
 ##==: 4. Save
-write_lines(tabla,'03_compute/output/04_regression_table_fixed_effects.tex')
+write_lines(tabla,'03_main_results/output/03_regression_table_fixed_effects.tex')

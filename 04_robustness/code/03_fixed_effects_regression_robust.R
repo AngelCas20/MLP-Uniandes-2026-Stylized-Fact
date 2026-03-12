@@ -49,4 +49,4 @@ tabla[17] = str_replace_all(tabla[17],"Adjusted","Adj")
 tabla = tabla[c(-19,-20)]
 
 ##==: 4. Save
-write_lines(tabla,'04_robustness/output/04_regression_table_fixed_effects_robust.tex')
+write_lines(tabla,'04_robustness/output/03_regression_table_fixed_effects_robust.tex')
