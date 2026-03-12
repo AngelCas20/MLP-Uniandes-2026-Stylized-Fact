@@ -43,8 +43,8 @@ df = df %>%
 pwt = pwt %>% 
       select(isocode  = countrycode,
              year,pop,rnna) %>% 
-      mutate(pop = pop*1e6,
-             capital_per_capita = rnna/pop) %>% 
+      mutate(capital_per_capita = rnna/pop,
+             pop = pop*1e6) %>% 
       drop_na()
 
 ##==: 3. Prepare data for for analysis 
