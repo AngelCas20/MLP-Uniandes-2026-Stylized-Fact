@@ -26,8 +26,9 @@ etable(model)
 
 tabla = etable(model,
                dict = c('capital_per_capita' = 'ln(Stock de Capital per cápita)',
-                        'outstanding_loans_commercial_banks' = "ln(Cuentas de créditos \\\\ en el sistema financiero)",
-                        'loan_accounts_commercial_banks' = 'ln(Cartera acumulada de créditos \\\\ en el sistema financiero)',
+                         "number_of_deposit_accounts_commercial_banks" = 'ln(Cuentas de depósitos \nen el sistema financiero)',
+                        'outstanding_loans_commercial_banks' = "ln(Cuentas de créditos \nen el sistema financiero)",
+                        'loan_accounts_commercial_banks' = 'ln(Cartera acumulada de créditos \nen el sistema financiero)',
                         'isocode' = 'País',
                         'year' =  'Año'),
               fitstat = ~ n + awr2,
@@ -48,7 +49,7 @@ tabla[16] = str_replace_all(tabla[16],'Observations','Observaciones')
 tabla[17] = str_replace_all(tabla[17],"Adjusted","Adj")
 tabla = tabla[c(-19,-20)]
 
-tabla = append(tabla,paste0('Países & ',unique_countries,' & ',unique_countries),after = 16)
+tabla = append(tabla,paste0('Países & ',unique_countries,' & ',unique_countries,'&'),after = 16)
 
 ##==: 4. Save table
 

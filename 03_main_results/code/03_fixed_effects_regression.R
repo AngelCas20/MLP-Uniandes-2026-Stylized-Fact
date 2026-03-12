@@ -46,7 +46,7 @@ tabla[16] = str_replace_all(tabla[16],'Observations','Observaciones')
 tabla[17] = str_replace_all(tabla[17],"Adjusted","Adj")
 tabla = tabla[c(-19,-20)]
 
-tabla = append(tabla,paste0('Países & ',unique_countries,' & ',unique_countries),after = 16)
+tabla = append(tabla,paste0('Países & ',unique_countries,' & ',unique_countries,' &'),after = 16)
 
 ##==: 4. Save
 write_lines(tabla,'03_main_results/output/03_regression_table_fixed_effects.tex')

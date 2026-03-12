@@ -26,9 +26,9 @@ etable(model1,model2)
 ##==: 4. Make table
 
 tabla = etable(model1,model2,
-               dict = c('capital_per_capita' = 'Stock de Capital \nper cápita',
-                        'outstanding_loans_commercial_banks' = "Cuentas de créditos \n en el sistema financiero",
-                        'loan_accounts_commercial_banks' = 'Cartera acumulada de créditos \n en el sistema financiero',
+               dict = c('capital_per_capita' = 'ln(Stock de Capital \nper cápita)',
+                        'outstanding_loans_commercial_banks' = "ln(Cuentas de créditos \n en el sistema financiero)",
+                        'loan_accounts_commercial_banks' = 'ln(Cartera acumulada de créditos \n en el sistema financiero)',
                         'isocode' = 'País',
                         'year' =  'Año'),
               fitstat = ~ n + awr2,
@@ -38,7 +38,7 @@ tabla = etable(model1,model2,
               ) %>% 
         as.character()
 
-tabla[5] = str_replace_all(tabla[5],'Dependent Variables:',' ')
+tabla[5] = str_replace_all(tabla[5],'Dependent Variable:',' ')
 tabla[6] = str_replace_all(tabla[6],'Model:','Modelo:')
 tabla[8] = ' '
 tabla[14] = str_replace_all(tabla[14],'Fixed-effects','Efectos fijos')
@@ -49,7 +49,7 @@ tabla[18] = str_replace_all(tabla[18],'Observations','Observaciones')
 tabla[19] = str_replace_all(tabla[19],"Adjusted","Adj")
 tabla = tabla[c(-21,-22)]
 
-tabla = append(tabla,paste0('Países & ',unique_countries,' & ',unique_countries),after = 18)
+tabla = append(tabla,paste0('Países & ',unique_countries,' & ',unique_countries,'&'),after = 18)
 
 ##==: 4. Save table
 
