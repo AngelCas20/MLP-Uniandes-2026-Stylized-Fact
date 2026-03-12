@@ -25,8 +25,8 @@ p1 = ggplot(df)+
      scale_x_continuous(labels = scales::percent,breaks = seq(0,0.3,0.05))+
      scale_y_continuous(labels = scales::percent,breaks = seq(-0.1,0.3,0.025))+
      labs(x = NULL,
-          y = 'Crecimiento del Capital per capita (%)',
-          title = 'Panel A: Crecimiento del acceso al sistema financiero vs \ncrecimiento del Stock de Capital per cápita');p1
+          y = 'Crecimiento de la cantidad de cuentas de crédito\n por cada 1000 personas en al sistema financiero (%)',
+          title = 'Panel A: Crecimiento del acceso al crédito vs crecimiento de acceso a la bancarización');p1
 
 ### 2.2 Increase in financial inclusion vs gdp per capita growth
 
@@ -43,8 +43,8 @@ p2 = ggplot(df)+
      scale_x_continuous(labels = scales::percent,breaks = seq(0,0.3,0.05))+
      scale_y_continuous(labels = scales::percent,breaks = seq(-0.1,0.1,0.025))+
      labs(x = NULL,
-          y = 'Crecimiento del PIB per capita (%)',
-          title = 'Panel B: Crecimiento del acceso al sistema financiero vs \ncrecimiento del PIB per cápita');p2
+          y = 'Crecimiento del volumen de crédito por cada\n 1000 personas en al sistema financiero (%)',
+          title = 'Panel B: Crecimiento del volumen del crédito vs crecimiento de acceso a la bancarización');p2
 
 ##==: 3. Merge plots
 
