@@ -23,25 +23,37 @@ Para replicar todos los resultados del proyecto, ejecute el script principal del
 
 ## Descripción de las subcarpetas:
 
--   01_input: contiene los insumos necesarios para cada tarea (bases de datos).
--   02_scripts: contiene los códigos utilizados en cada etapa del proceso (importación, contribución).
--   03_output: contiene los resultados generados a partir de la ejecución de los scripts (tablas procesadas, visualizaciones, gráficas).
+- 01_input: contiene los insumos necesarios para el desarrollo del proyecto, principalmente las bases de datos utilizadas en las diferentes etapas del trabajo.
 
+- 02_scripts: contiene los scripts utilizados en cada etapa del proceso, incluyendo la importación, procesamiento y transformación de los datos, así como la generación de resultados.
+
+- 03_output: contiene los resultados generados a partir de la ejecución de los scripts, tales como tablas procesadas, visualizaciones y gráficas utilizadas en el documento.
 
 <!---------------------------->
 
 ## Estructura Gráfica de Carpetas:
 
+📂 00_programs
+├── 📄 00_packages.R
+└── 📄 00_themes.R
+
 📂 01_data
+├── 📂 input
+├── 📂 code
+└── 📂 output
 
-├── 📂 01_input
+📂 02_wrangle
+├── 📂 code
+└── 📂 output
 
-├── 📂 02_scripts
+📂 03_main_results
+├── 📂 code
+└── 📂 output
 
-└── 📂 03_output
+📂 04_robustness
+├── 📂 code
+└── 📂 output
 
-📂 02_contribution
-
-├── 📂 02_scripts
-
-└── 📂 03_output
+📂 05_mechanisms
+├── 📂 code
+└── 📂 output
