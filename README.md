@@ -34,37 +34,26 @@ Para replicar todos los resultados del proyecto, ejecute el script principal del
 ## Estructura Gráfica de Carpetas:
 
 📂 00_programs
-│
-├── 📄 00_packages.R
-└── 📄 00_themes.R
-
+   ├── 00_packages.R
+   └── 00_themes.R
 
 📂 01_data
-│
-├── 📂 input
-├── 📂 code
-└── 📂 output
-
+   ├── input
+   ├── code
+   └── output
 
 📂 02_wrangle
-│
-├── 📂 code
-└── 📂 output
-
+   ├── code
+   └── output
 
 📂 03_main_results
-│
-├── 📂 code
-└── 📂 output
-
+   ├── code
+   └── output
 
 📂 04_robustness
-│
-├── 📂 code
-└── 📂 output
-
+   ├── code
+   └── output
 
 📂 05_mechanisms
-│
-├── 📂 code
-└── 📂 output
+   ├── code
+   └── output
