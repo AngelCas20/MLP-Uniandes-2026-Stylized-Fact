@@ -66,7 +66,7 @@ Para replicar todos los resultados del proyecto, ejecute el script principal del
 └── 📂 output
 
 📂 05_mechanisms
-│
+
 ├── 📂 code
 
 └── 📂 output
