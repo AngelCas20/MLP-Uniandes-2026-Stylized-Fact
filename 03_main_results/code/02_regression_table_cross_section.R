@@ -40,5 +40,7 @@ tabla[16] = str_replace_all(tabla[16],"Adjusted","Adj")
 
 tabla = tabla[c(-18)]
 
+tabla[14] = "Errores estándar & IID & IID & HC1 & HC1 \\\\"
+
 ##==: 4. Save
 write_lines(tabla,'03_main_results/output/02_regression_table_cross_section.tex')
