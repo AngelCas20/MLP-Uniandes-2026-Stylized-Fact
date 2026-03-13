@@ -36,30 +36,37 @@ Para replicar todos los resultados del proyecto, ejecute el script principal del
 📂 00_programs
 
 ├── 📄 00_packages.R
+
 └── 📄 00_themes.R
 
 📂 01_data
 
-├── 📂 01_input
-├── 📂 02_scripts
-└── 📂 03_output
+├── 📂 input
+
+├── 📂 code
+
+└── 📂 output
 
 📂 02_wrangle
 
-├── 📂 02_scripts
-└── 📂 03_output
+├── 📂 code
+
+└── 📂 output
 
 📂 03_main_results
 
-├── 📂 02_scripts
-└── 📂 03_output
+├── 📂 code
+
+└── 📂 output
 
 📂 04_robustness
 
-├── 📂 02_scripts
-└── 📂 03_output
+├── 📂 code
+
+└── 📂 output
 
 📂 05_mechanisms
 │
-├── 📂 02_scripts
-└── 📂 03_output
+├── 📂 code
+
+└── 📂 output
