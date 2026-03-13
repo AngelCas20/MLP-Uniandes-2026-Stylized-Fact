@@ -1,8 +1,8 @@
 # Cuando el ahorro sale del colchón: bancarización y acumulación de capital.
 
-Este repositorio contiene el flujo de trabajo para la resolución del *Hecho estilizado (2026-1) - Macroeconomía avanzada de Largo Plazo*. Las carpetas están organizadas en seis subcarpetas (una de ellas son los paquetes) que cubren cada etapa del proceso, desde el cargue de los datos y procesamiento de los datos hasta la generación de visualizaciones para el documento.
+Este repositorio contiene el flujo de trabajo completo utilizado para el desarrollo del ejercicio “Hecho estilizado (2026-1) – Macroeconomía Avanzada de Largo Plazo”. La estructura del proyecto está organizada en seis subcarpetas (incluyendo una destinada a la carga de paquetes), las cuales cubren cada etapa del proceso de análisis: desde la descarga y carga de los datos, su procesamiento y construcción de variables, hasta la generación de tablas y visualizaciones utilizadas en el documento final.
 
-Por favor ejecute el código del repositorio denomidado: X para replicar los resultados. 
+Para replicar todos los resultados del proyecto, ejecute el script principal del repositorio denominado X, el cual reproduce de manera secuencial cada etapa del trabajo realizado.
 
 <!---------------------------->
 
