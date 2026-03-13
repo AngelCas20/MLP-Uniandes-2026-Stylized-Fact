@@ -12,38 +12,34 @@ df = import('02_wrangle/output/03_geometric_growth_mechanism.rds',
 
 ### 2.1 Main variable on mechanisms
 
-model_iid = feols(data = df,c(outstanding_loans_commercial_banks,loan_accounts_commercial_banks) ~ number_of_deposit_accounts_commercial_banks)
+model_iid_mechanism = feols(data = df,outstanding_loans_commercial_banks ~ number_of_deposit_accounts_commercial_banks)
 
-model_robust = feols(data = df,c(outstanding_loans_commercial_banks,loan_accounts_commercial_banks) ~ number_of_deposit_accounts_commercial_banks,se = 'hc1')
+model_robust_mechanism = feols(data = df,outstanding_loans_commercial_banks ~ number_of_deposit_accounts_commercial_banks,se = 'hc1')
 
 ### 2.2 Mechanisms on Capital Stock
 
-model_iid_1 = feols(data = df,capital_per_capita ~ loan_accounts_commercial_banks)
-model_iid_2 = feols(data = df,capital_per_capita ~ outstanding_loans_commercial_banks)
+model_iid_capital = feols(data = df,capital_per_capita ~ outstanding_loans_commercial_banks)
 
-model_robust_1 = feols(data = df,capital_per_capita ~ loan_accounts_commercial_banks,se = 'hetero')
-model_robust_2 = feols(data = df,capital_per_capita ~ outstanding_loans_commercial_banks,se = 'hetero')
+model_robust_capital = feols(data = df,capital_per_capita ~ outstanding_loans_commercial_banks,se = 'hetero')
 
 ##==: 3. Make table
 
 ### 3.1 Panel A
-tabla_panel_a = etable(model_iid,
-                               model_robust,
-                               dict = c('number_of_deposit_accounts_commercial_banks' = '$\\Delta$ Cuentas de depósitos \\\\ en el sistema financiero',
-                                        'outstanding_loans_commercial_banks' = "$\\Delta$ Cuentas de créditos \n en el sistema financiero",
-                                        'loan_accounts_commercial_banks' = '$\\Delta$ Cartera acumulada de créditos \n en el sistema financiero'),
-                               fitstat = ~ n + ar2,
-                               digits = 3,
-                               tex = TRUE,
-                               se.row = TRUE
-                               ) %>%
-                        as.character()
+tabla_panel_a = etable(model_iid_mechanism,
+                       model_robust_mechanism,
+                       dict = c('number_of_deposit_accounts_commercial_banks' = '$\\Delta$ Cuentas de depósitos \\\\ en el sistema financiero',
+                                'outstanding_loans_commercial_banks' = "$\\Delta$ Cuentas de créditos \n en el sistema financiero"),
+                        fitstat = ~ n + ar2,
+                        digits = 3,
+                        tex = TRUE,
+                        se.row = TRUE
+                        ) %>%
+            as.character()
 
 ### 3.2 Panel B
-tabla_panel_b = etable(model_iid_1,model_robust_1,model_iid_2,model_robust_2,
+tabla_panel_b = etable(model_iid_capital,model_robust_capital,
                        dict = c('capital_per_capita' = '$\\Delta$ Stock de Capital per cápita',
-                                'outstanding_loans_commercial_banks' = "$\\Delta$ Cuentas de créditos \\\\ en el sistema financiero",
-                                'loan_accounts_commercial_banks' = '$\\Delta$ Cartera acumulada de créditos \\\\ en el sistema financiero'),
+                                'outstanding_loans_commercial_banks' = "$\\Delta$ Cuentas de créditos \\\\ en el sistema financiero"),
                        fitstat = ~ n + ar2,
                        digits = 3,
                        tex = TRUE,
@@ -71,12 +67,12 @@ tabla_panel_b[5] = str_replace_all(tabla_panel_b[5],'Dependent Variable:',' ')
 tabla_panel_b[6] = str_replace_all(tabla_panel_b[6],'Model:','Modelo:')
 tabla_panel_b[8] = ' '
 tabla_panel_b[9] = str_replace_all(tabla_panel_b[9],'Constant','Constante')
-tabla_panel_b = tabla_panel_b[c(-16)]
-tabla_panel_b[16] = str_replace_all(tabla_panel_b[16],'Standard-Errors','Errores estándar')
-tabla_panel_b[16] = str_replace_all(tabla_panel_b[16],'Heteroskedasticity-robust','HC1')
-tabla_panel_b[17] = str_replace_all(tabla_panel_b[17],'Observations','Observaciones')
-tabla_panel_b[18] = str_replace_all(tabla_panel_b[18],"Adjusted","Adj")
-tabla_panel_b = tabla_panel_b[c(-20)]
+tabla_panel_b = tabla_panel_b[c(-13,-14)]
+tabla_panel_b[13] = str_replace_all(tabla_panel_b[13],'Standard-Errors','Errores estándar')
+tabla_panel_b[13] = str_replace_all(tabla_panel_b[13],'Heteroskedasticity-robust','HC1')
+tabla_panel_b[14] = str_replace_all(tabla_panel_b[14],'Observations','Observaciones')
+tabla_panel_b[15] = str_replace_all(tabla_panel_b[15],"Adjusted","Adj")
+tabla_panel_b = tabla_panel_b[c(-17)]
 
 ##==: 5. Bind tables
 
@@ -88,10 +84,10 @@ tabla_panel = append(tabla_panel,
                      values = "\\tabularnewline",
                      after = 5)
 
-tabla_panel[[19]] = "   \\tabularnewline \\midrule \\midrule"
+tabla_panel[19] = "   \\tabularnewline \\midrule \\midrule"
 
 tabla_panel = append(tabla_panel,
-                     values = 'Panel B: Crecimiento de cuentas de depósitos en el \\\\ sistema financiero y crecimiento de acceso a créditos',
+                     values = 'Panel B: Crecimiento de montos de créditos como  \\\\ \\% del PIB y crecimiento del Stock de Capital',
                      after = 19)
 
 tabla_panel = append(tabla_panel,
@@ -99,16 +95,14 @@ tabla_panel = append(tabla_panel,
                      after = 20)
 
 tabla_panel = append(tabla_panel,
-                     values = tabla_panel_b[5:18],
+                     values = tabla_panel_b[5:15],
                      after = 21)
 
 tabla_panel = append(tabla_panel,
                      values = " \\midrule \\midrule",
-                     after = 35)
+                     after = 32)
 
-tabla_panel = tabla_panel[-c(15,32)]
-
-tabla_panel[15] = "   Errores estándar                                                       & IID           & IID & HC1           & HC1 \\\\   "
+tabla_panel = tabla_panel[-c(15)]
 
 ##==: 6. Save table
 

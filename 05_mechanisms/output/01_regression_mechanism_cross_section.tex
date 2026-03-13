@@ -1,36 +1,34 @@
 \begingroup
 \centering
-\begin{tabular}{lcccc}
+\begin{tabular}{lcc}
    \tabularnewline \midrule \midrule
 Panel A: Crecimiento de cuentas de depósitos en el \\ sistema financiero y crecimiento de acceso a créditos
 \tabularnewline
-                                             & \makecell{$\Delta$ Cuentas de créditos \\ en el sistema financiero}     & \makecell{$\Delta$ Cartera acumulada de créditos \\ en el sistema financiero}     & \makecell{$\Delta$ Cuentas de créditos \\ en el sistema financiero}     & \makecell{$\Delta$ Cartera acumulada de créditos \\ en el sistema financiero}\\      
-   Modelo:                                                       & (1)                                                                     & (2)                                                                               & (3)                                                                     & (4)\\  
+   Dependent Variable: & \multicolumn{2}{c}{\makecell{$\Delta$ Cuentas de créditos \\ en el sistema financiero}}\\
+   Modelo:                                                       & (1)           & (2)\\  
    \midrule
  
-   Constante                                                     & 0.011                                                                   & 0.014                                                                             & 0.011$^{*}$                                                             & 0.014\\   
-                                                                & (0.008)                                                                 & (0.010)                                                                           & (0.006)                                                                 & (0.009)\\   
-   $\Delta$ Cuentas de depósitos \\ en el sistema financiero    & 0.235$^{**}$                                                            & 0.790$^{***}$                                                                     & 0.235$^{***}$                                                           & 0.790$^{***}$\\   
-                                                                & (0.086)                                                                 & (0.105)                                                                           & (0.084)                                                                 & (0.146)\\   
-   Errores estándar                                                       & IID           & IID & HC1           & HC1 \\   
-   Observaciones                                                 & 27                                                                      & 27                                                                                & 27                                                                      & 27\\  
-   Adj R$^2$                                               & 0.20142                                                                 & 0.68195                                                                           & 0.20142                                                                 & 0.68195\\  
+   Constante                                                     & 0.008         & 0.008$^{*}$\\   
+                                                                & (0.006)       & (0.004)\\   
+   $\Delta$ Cuentas de depósitos \\ en el sistema financiero    & 0.217$^{***}$ & 0.217$^{***}$\\   
+                                                                & (0.066)       & (0.067)\\   
+   Errores estándar                                              & IID           & HC1 \\   
+   Observaciones                                                 & 51            & 51\\  
+   Adj R$^2$                                               & 0.16537       & 0.16537\\  
    \tabularnewline \midrule \midrule
-Panel B: Crecimiento de cuentas de depósitos en el \\ sistema financiero y crecimiento de acceso a créditos
+Panel B: Crecimiento de montos de créditos como  \\ \% del PIB y crecimiento del Stock de Capital
 \tabularnewline
-     & \multicolumn{4}{c}{$\Delta$ Stock de Capital per cápita}\\
-   Modelo:                                                                & (1)           & (2)                       & (3)           & (4)\\  
+     & \multicolumn{2}{c}{$\Delta$ Stock de Capital per cápita}\\
+   Modelo:                                                      & (1)           & (2)\\  
    \midrule
  
-   Constante                                                              & 0.022$^{***}$ & 0.022$^{***}$             & 0.024$^{***}$ & 0.024$^{***}$\\   
-                                                                         & (0.006)       & (0.006)                   & (0.005)       & (0.004)\\   
-   $\Delta$ Cartera acumulada de créditos \\ en el sistema financiero    & 0.110$^{*}$   & 0.110                     &               &   \\   
-                                                                         & (0.063)       & (0.070)                   &               &   \\   
-   $\Delta$ Cuentas de créditos \\ en el sistema financiero              &               &                           & 0.171         & 0.171$^{*}$\\   
-                                                                         &               &                           & (0.126)       & (0.092)\\   
-   Errores estándar                                                       & IID           & HC1 & IID           & HC1 \\   
-   Observaciones                                                          & 27            & 27                        & 27            & 27\\  
-   Adj R$^2$                                                        & 0.07192       & 0.07192                   & 0.03128       & 0.03128\\  
+   Constante                                                    & 0.024$^{***}$ & 0.024$^{***}$\\   
+                                                               & (0.004)       & (0.003)\\   
+   $\Delta$ Cuentas de créditos \\ en el sistema financiero    & 0.246$^{**}$  & 0.246$^{***}$\\   
+                                                               & (0.093)       & (0.087)\\   
+   Errores estándar                                             & IID           & HC1 \\   
+   Observaciones                                                & 51            & 51\\  
+   Adj R$^2$                                              & 0.10593       & 0.10593\\  
  \midrule \midrule
 \end{tabular}
 \par\endgroup

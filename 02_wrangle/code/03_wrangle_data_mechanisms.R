@@ -15,8 +15,7 @@ pwt = import('01_data/output/01_pwt110.rds',
 
 ### 2.1 Filter for covariates
 df = imf %>%
-     filter((indicator == 'Loan accounts, Commercial banks' & type_of_transformation == 'Number')|
-             (indicator == 'Outstanding loans, Commercial banks' & type_of_transformation == 'Percent of GDP')|
+     filter((indicator == 'Outstanding loans, Commercial banks' & type_of_transformation == 'Percent of GDP')|
              indicator == 'Number of deposit accounts, Commercial banks') 
 
 ### 2.2 Remove add isocode 
@@ -38,8 +37,7 @@ df = df %>%
 pwt = pwt %>% 
       select(isocode  = countrycode,
              year,pop,rnna) %>% 
-      mutate(capital_per_capita = rnna/pop,
-             pop = pop*1e6) %>% 
+      mutate(capital_per_capita = rnna/pop) %>% 
       drop_na()
 
 ##==: 3. Prepare data for for analysis 
@@ -48,10 +46,6 @@ pwt = pwt %>%
 data = inner_join(x = pwt,y = df) %>% 
        filter(isocode != 'VEN') %>% 
        arrange(isocode,year)
-
-### 3.2 Create normalized rate by a 1000 people
-data = data %>% 
-       mutate(loan_accounts_commercial_banks = (loan_accounts_commercial_banks/pop)*1000)
 
 ##==: 4. Compute geometric growth rate dataset
 
@@ -71,7 +65,9 @@ geometric_growth = data %>%
 ### 4.4 Compute geometric growth 
 geometric_growth = geometric_growth %>% 
                    group_by(isocode) %>% 
-                   summarise(across(.cols = c(capital_per_capita,outstanding_loans_commercial_banks,loan_accounts_commercial_banks,number_of_deposit_accounts_commercial_banks),
+                   summarise(across(.cols = c(capital_per_capita,
+                                              outstanding_loans_commercial_banks,
+                                              number_of_deposit_accounts_commercial_banks),
                                     .fns = function(x){
                                      x = (x/lag(x))^(1/time_diff) -1
                                      x = max(x,na.rm = T)
