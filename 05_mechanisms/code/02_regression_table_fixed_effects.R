@@ -37,6 +37,7 @@ tabla_panel_a = etable(model_panel_a,
                                 'year' =  'Año'),
                        fitstat = ~ n + awr2,
                        digits = 3,
+                       digits.stats = 3,
                        tex = TRUE,
                        se.row = TRUE
                       ) %>% 
@@ -50,6 +51,7 @@ tabla_panel_b = etable(model_panel_b,
                                 'year' =  'Año'),
                        fitstat = ~ n + awr2,
                        digits = 3,
+                       digits.stats = 3,
                        tex = TRUE,
                        se.row = TRUE
                       ) %>% 
@@ -58,7 +60,7 @@ tabla_panel_b = etable(model_panel_b,
 ##==: 5. Prepare table
 
 ### 5.1 Prepare panel A
-tabla_panel_a[5] = str_replace_all(tabla_panel_a[5],'Dependent Variables:',' ')
+tabla_panel_a[5] = str_replace_all(tabla_panel_a[5],'Dependent Variable:',' ')
 tabla_panel_a[6] = str_replace_all(tabla_panel_a[6],'Model:','Modelo:')
 tabla_panel_a[8] = ' '
 tabla_panel_a[12] = str_replace_all(tabla_panel_a[12],'Fixed-effects','Efectos fijos')
@@ -68,7 +70,7 @@ tabla_panel_a = tabla_panel_a[c(-16,-17)]
 tabla_panel_a[16] = str_replace_all(tabla_panel_a[16],'Observations','Observaciones')
 tabla_panel_a[17] = str_replace_all(tabla_panel_a[17],"Adjusted","Adj")
 tabla_panel_a = tabla_panel_a[c(-19,-20)]
-tabla_panel_a = append(tabla_panel_a,paste0('Países & ',unique_countries,' & '),after = 16)
+tabla_panel_a = append(tabla_panel_a,paste0('Países & ',unique_countries,' \\\\ '),after = 16)
 
 ### 5.2 Prepare Panel B
 tabla_panel_b[5] = str_replace_all(tabla_panel_b[5],'Dependent Variable:',' ')
@@ -80,7 +82,8 @@ tabla_panel_b[14] = str_replace_all(tabla_panel_b[14],'Yes','\\\\checkmark')
 tabla_panel_b = tabla_panel_b[c(-21,-22)]
 tabla_panel_b[18] = str_replace_all(tabla_panel_b[18],'Observations','Observaciones')
 tabla_panel_b[19] = str_replace_all(tabla_panel_b[19],"Adjusted","Adj")
-tabla_panel_b = append(tabla_panel_b,paste0('Países & ',unique_countries,' & '),after = 18)
+tabla_panel_b = tabla_panel_b[c(-16,-17)]
+tabla_panel_b = append(tabla_panel_b,paste0('Países & ',unique_countries,' \\\\ '),after = 16)
 
 ##==: 6. Bind tables
 
@@ -103,12 +106,12 @@ tabla_panel = append(tabla_panel,
                      after = 22)
 
 tabla_panel = append(tabla_panel,
-                     values = tabla_panel_b[5:20],
+                     values = tabla_panel_b[5:18],
                      after = 23)
 
 tabla_panel = append(tabla_panel,
                      values = " \\midrule \\midrule",
-                     after = 39)
+                     after = 37)
 
 ##==: 7. Save table
 

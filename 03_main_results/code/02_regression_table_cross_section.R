@@ -23,6 +23,7 @@ tabla = etable(model_iid,
                         'capital_per_capita' = '$\\Delta$ Stock de Capital \nper cápita'),
               fitstat = ~ n + ar2,
               digits = 3,
+              digits.stats = 3,
               tex = TRUE,
               se.row = TRUE
               ) %>%

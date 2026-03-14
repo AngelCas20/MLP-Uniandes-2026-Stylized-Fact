@@ -30,6 +30,7 @@ tabla = etable(model,
                         'year' =  'Año'),
               fitstat = ~ n + awr2,
               digits = 3,
+              digits.stats = 3,
               tex = TRUE,
               se.row = TRUE
               ) %>% 
