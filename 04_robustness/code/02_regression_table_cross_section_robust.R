@@ -8,13 +8,12 @@ source('00_programs/00_packages.R')
 df = import('02_wrangle/output/02_geometric_growth_robustness.rds',
             setclass = 'tibble')
 
+
 ##==: 2. Run regression
 
 model_iid = feols(data = df,c(gdp_per_capita,capital_per_capita) ~ number_accounts_1000_adults)
 
 model_robust = feols(data = df,c(gdp_per_capita,capital_per_capita) ~ number_accounts_1000_adults,se = 'hc1')
-
-etable(model_iid,model_robust)
 
 ##==: 3. Make table
 
@@ -25,6 +24,7 @@ tabla = etable(model_iid,
                         'capital_per_capita' = '$\\Delta$ Stock de Capital \nper cápita'),
               fitstat = ~ n + ar2,
               digits = 3,
+              digits.stats = 3,
               tex = TRUE,
               se.row = TRUE
               ) %>%
@@ -41,6 +41,8 @@ tabla[15] = str_replace_all(tabla[15],'Observations','Observaciones')
 tabla[16] = str_replace_all(tabla[16],"Adjusted","Adj")
 
 tabla = tabla[c(-18)]
+
+tabla[14] = "Errores estándar & IID & IID & HC1 & HC1 \\\\"
 
 ##==: 4. Save
 write_lines(tabla,'04_robustness/output/02_regression_table_cross_section_robust.tex')
