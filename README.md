@@ -2,8 +2,9 @@
 
 Este repositorio contiene el flujo de trabajo completo utilizado para el desarrollo del ejercicio “Hecho estilizado (2026-1) – Macroeconomía Avanzada de Largo Plazo”. La estructura del proyecto está organizada en seis subcarpetas (incluyendo una destinada a la carga de paquetes), las cuales cubren cada etapa del proceso del trabajo: desde la descarga y carga de los datos, su procesamiento y construcción de variables, hasta la generación de tablas y visualizaciones utilizadas en el documento final.
 
-Para replicar todos los resultados del proyecto, ejecute el script principal del repositorio denominado X, el cual reproduce de manera secuencial cada etapa del trabajo realizado.
+Para replicar todos los resultados del proyecto, ejecute el script principal del repositorio denominado 00_automatizacion.R, el cual reproduce de manera secuencial cada etapa del trabajo realizado.
 
+Nota: asegurese de estar debtri del .Rproj antes de ejecutar los códigos, dado el caso de trabajar en [RStudio](https://posit.co/downloads/).
 <!---------------------------->
 
 ## Descripción de carpetas:
