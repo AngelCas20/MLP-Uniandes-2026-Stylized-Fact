@@ -10,7 +10,8 @@ pkgs = c("tidyverse",
          "fixest",
          "grid",
          "snakecase",
-         "panelsummary")
+         "panelsummary", 
+         "WDI")
 
 ### Instal pacman if not available
 if(c("pacman") %in% installed.packages()[,1] == FALSE){
