@@ -30,7 +30,7 @@ imf = imf %>%
 
 ### 2.4 Clean Penn World Table
 pwt = pwt %>% 
-      mutate(gdp_per_capita = rgdpo/pop,
+      mutate(gdp_per_capita = rgdpna/pop,
              capital_per_capita = rnna/pop) %>% 
       select(year,isocode = countrycode,country,gdp_per_capita,capital_per_capita) %>% 
       arrange(isocode,year) %>% 
