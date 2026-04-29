@@ -31,6 +31,7 @@ tabla_panel_a = etable(model_iid_mechanism,
                                 'outstanding_loans_commercial_banks' = "$\\Delta$ Valor de créditos vigentes \n en el sistema financiero como \\% del PIB"),
                         fitstat = ~ n + ar2,
                         digits = 3,
+                        digits.stats = 3,
                         tex = TRUE,
                         se.row = TRUE
                         ) %>%
@@ -42,6 +43,7 @@ tabla_panel_b = etable(model_iid_capital,model_robust_capital,
                                 'outstanding_loans_commercial_banks' = "$\\Delta$ Valor de créditos vigentes \n en el sistema financiero como \\% del PIB"),
                        fitstat = ~ n + ar2,
                        digits = 3,
+                       digits.stats = 3,
                        tex = TRUE,
                        se.row = TRUE
                       ) %>%
@@ -50,7 +52,7 @@ tabla_panel_b = etable(model_iid_capital,model_robust_capital,
 ##==: 4. Prepare table
 
 ### 4.1 Prepare Panel A
-tabla_panel_a[5] = str_replace_all(tabla_panel_a[5],'Dependent Variables:',' ')
+tabla_panel_a[5] = str_replace_all(tabla_panel_a[5],'Dependent Variable:',' ')
 tabla_panel_a[6] = str_replace_all(tabla_panel_a[6],'Model:','Modelo:')
 tabla_panel_a[8] = ' '
 tabla_panel_a[9] = str_replace_all(tabla_panel_a[9],'Constant','Constante')
