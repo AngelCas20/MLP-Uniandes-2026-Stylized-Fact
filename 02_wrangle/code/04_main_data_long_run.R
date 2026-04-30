@@ -48,7 +48,7 @@ data = data %>%
 ##==: 4. Test for long lasting effects
 
 ### 4.1 First decade 
-first_decade = c(2004,2013)
+first_decade = c(2004,2009)
 
 d1 = data |> 
      filter(year %in% first_decade) |> 
@@ -58,7 +58,7 @@ d1 = data |>
      select(year,isocode,number_accounts_1000_adults)
 
 ### 4.2 second decade 
-second_decade = c(2014,2023)
+second_decade = c(2010,2023)
 
 d2 = data |> 
      filter(year %in% second_decade) |> 
