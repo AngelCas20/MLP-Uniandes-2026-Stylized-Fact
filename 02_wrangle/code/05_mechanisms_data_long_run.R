@@ -87,9 +87,6 @@ d2 = d2 %>%
 
 geometric_growth = inner_join(x = d1,y = d2)
 
-feols(geometric_growth, c(capital_per_capita ,outstanding_loans_commercial_banks) ~ number_of_deposit_accounts_commercial_banks,se = 'hetero')
-feols(geometric_growth, c(capital_per_capita ,outstanding_loans_commercial_banks) ~ number_of_deposit_accounts_commercial_banks,se = 'iid')
-
 ##==: 5. Export data
 
 export(geometric_growth,'02_wrangle/output/05_geometric_growth_mechanism_long_run.rds')
