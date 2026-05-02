@@ -14,4 +14,4 @@ model = feols(data = df,c(gdp_per_capita,capital_per_capita) ~ number_accounts_1
 
 ##==: 3. Export
 
-export(model,'03_main_regression/output/02_main_regression_cross_section.rds')
+export(model,'03_main_regression/output/02_main_regression_cross_section_long_run')
