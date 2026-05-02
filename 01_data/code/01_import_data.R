@@ -30,7 +30,13 @@ imf = import('01_data/input/dataset_2026-03-08T23_46_47.042512374Z_DEFAULT_INTEG
             setclass = 'tibble') %>% 
             clean_names() 
 
+cris = import("01_data/input/41308_2020_107_MOESM1_ESM.xlsx", 
+              setclass = "tibble", 
+              sheet = 5) %>% 
+              clean_names() 
+
 ##==: 2. Export data
 export(wb,'01_data/output/01_wb_global_findex_db_2025.rds')
 export(pwt,'01_data/output/01_pwt110.rds')
 export(imf,'01_data/output/01_imf_data.rds')
+export(cris,'01_data/output/01_cris_data.rds')
