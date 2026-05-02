@@ -47,4 +47,4 @@ tabla_panel_a = append(tabla_panel_a,
 
 ##==: 4. Save table
 
-write_lines(tabla_panel_a,'05_visuals/output/04_tabla_3_annex_1.tex')
+write_lines(tabla_panel_a,'05_visuals/output/04_tabla_3_annex_main_elasticity.tex')
