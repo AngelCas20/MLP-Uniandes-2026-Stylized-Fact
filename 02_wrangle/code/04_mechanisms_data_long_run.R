@@ -67,7 +67,7 @@ d2 = data |>
      group_by(isocode) |> 
      filter(n() == 2) |> 
      ungroup() |> 
-     select(year,isocode,outstanding_loans_commercial_banks)
+     select(year,isocode,outstanding_loans_commercial_banks,capital_per_capita)
 
 ##==: 5. Compute geometric growth rates
 
@@ -80,7 +80,7 @@ d1 = d1 %>%
 
 d2 = d2 %>%
      group_by(isocode) |> 
-     summarise(across(.cols = c(outstanding_loans_commercial_banks),
+     summarise(across(.cols = c(outstanding_loans_commercial_banks,capital_per_capita),
                         .fns = function(x){
                         x = (x/lag(x))^(1/second_decade) -1
                         x = max(x,na.rm = T)}))
