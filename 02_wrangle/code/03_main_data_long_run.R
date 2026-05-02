@@ -85,7 +85,6 @@ d2 = d2 %>%
 
 geometric_growth = inner_join(x = d1,y = d2)
 
+##==: 6. Export data
 
-##==: 5. Export data
-
-export(geometric_growth,'02_wrangle/output/04_geometric_growth_long_run.rds')
+export(geometric_growth,'02_wrangle/output/03_geometric_growth_long_run.rds')

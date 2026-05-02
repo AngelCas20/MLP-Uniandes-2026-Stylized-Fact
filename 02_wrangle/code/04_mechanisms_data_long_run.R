@@ -89,4 +89,4 @@ geometric_growth = inner_join(x = d1,y = d2)
 
 ##==: 5. Export data
 
-export(geometric_growth,'02_wrangle/output/05_geometric_growth_mechanism_long_run.rds')
+export(geometric_growth,'02_wrangle/output/04_geometric_growth_mechanism_long_run.rds')

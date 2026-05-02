@@ -3,7 +3,6 @@ cat("\f")
 rm(list = ls())
 source('00_programs/00_packages.R')
 
-
 # === 01. importar:
 
 cris = import("01_data/output/01_cris_data.rds")
@@ -95,7 +94,7 @@ geometric_growth = geometric_growth %>%
 data = inner_join(geometric_growth, cris, by = c("isocode")) %>%  drop_na()
 
 
-export(data, "02_wrangle/output/06_datos_crisis.rds")
+export(data, "02_wrangle/output/05_datos_crisis.rds")
 
 # model_iid = feols(data = data, number_accounts_1000_adults ~ asinh(mean_prop), se = "hetero"); etable(model_iid)
 # model_iid = feols(data = data, number_accounts_1000_adults ~ asinh(mean_loss_gdp_per), se = "hetero"); etable(model_iid)

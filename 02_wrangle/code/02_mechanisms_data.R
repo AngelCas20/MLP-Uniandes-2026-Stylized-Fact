@@ -76,5 +76,5 @@ geometric_growth = geometric_growth %>%
 
 ##==: 5. Export data
 
-export(geometric_growth,'02_wrangle/output/03_geometric_growth_mechanism.rds')
-export(data,'02_wrangle/output/03_processed_data_mechanism.rds')
+export(geometric_growth,'02_wrangle/output/02_geometric_growth_mechanism.rds')
+export(data,'02_wrangle/output/02_processed_data_mechanism.rds')
