@@ -20,4 +20,4 @@ model = feols(data = df,c(gdp_per_capita,capital_per_capita) ~ number_accounts_1
 
 ##==: 4. Export 
 
-export(model,'03_main_regression/output/02_main_regression_panel_data.rds')
+export(model,'03_main_regression/output/03_main_regression_panel_data.rds')
