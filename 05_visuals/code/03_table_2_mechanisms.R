@@ -47,6 +47,8 @@ tabla_panel = append(tabla_panel,
 
 tabla_panel[7] = "     & \\multicolumn{2}{c}{\\makecell{$\\Delta$ Cuentas de depósitos \\\\ en el sistema financiero}}\\\\"
 
+tabla_panel = tabla_panel[c(-5,-6)]
+
 ##==: 4. Save table
 
 write_lines(tabla_panel,'05_visuals/output/03_table_2_distrust_on_banks.tex')
