@@ -4,7 +4,6 @@ Este repositorio contiene el flujo de trabajo completo utilizado para el desarro
 
 Para replicar todos los resultados del proyecto, ejecute el script principal del repositorio denominado 00_automatizacion.R, el cual reproduce de manera secuencial cada etapa del trabajo realizado.
 
-Nota: asegurese de estar debtri del .Rproj antes de ejecutar los códigos, dado el caso de trabajar en [RStudio](https://posit.co/downloads/).
 <!---------------------------->
 
 ## Descripción de carpetas:
